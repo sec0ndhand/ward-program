@@ -45,7 +45,7 @@ export function usePrograms(selectedDate = "") {
           });
         });
     });
-  }, []);
+  }, [selectedDate]);
   return [program, programs, error];
 }
 
