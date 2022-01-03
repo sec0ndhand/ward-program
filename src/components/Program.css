@@ -1,0 +1,56 @@
+.program, .program-header, .program-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% - 2rem);
+    height: 100%;
+    transition: all 0.2s ease-in-out;
+    padding: 1rem;
+}
+
+.program > .program-header > .title {
+    font-size: 4.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.program > .program-header > .subtitle {
+    font-size: 1.5rem;
+    font-weight: 400;
+    text-transform: capitalize;
+    margin: -40px 60px 0 0;
+    margin-top: -30px;
+}
+
+.program > .program-header > p, .program > .program-header > h4 {
+    margin: .25rem 0;
+}
+
+.program-items {
+    align-items: flex-start;
+}
+
+.program-items > .program_item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    transition: all 0.2s ease-in-out;
+}
+
+
+.program_item > h4, .program_item > p {
+    margin: .5rem 0;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.program_item > p {
+    margin-left: 1rem;
+}
