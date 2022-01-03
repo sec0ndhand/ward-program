@@ -54,3 +54,13 @@
 .program_item > p {
     margin-left: 1rem;
 }
+
+.error {
+    color: red;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 1rem;
+    background-color: #f5c7c7;
+    border: red;
+}

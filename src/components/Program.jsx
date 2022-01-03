@@ -16,9 +16,11 @@ export function Program(props) {
       let tmpDate = program.find(p => p.name === "Date")?.data || ""
       setDate(tmpDate ? new Date(tmpDate) : new Date());
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [program.length]);
   return (
     <div className="program">
+      {error && <div className="error">{JSON.stringify(error)}</div>}
       <header className="program-header">
         <h1 className="title">Smithfield</h1>
         <h3 className="subtitle">
@@ -42,7 +44,7 @@ export function Program(props) {
       <hr width="100%" />
       <footer>
         {link && (
-          <a href={link} target="_blank">
+          <a href={link} target="_blank" rel="noreferrer">
             View Broadcast
           </a>
         )}
