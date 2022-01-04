@@ -14,7 +14,7 @@ export function Program(props) {
       setTheme(program.find(p => p.name === "Theme")?.data || "");
       setLink(program.find(p => p.name === "Link")?.data || "");
       let tmpDate = program.find(p => p.name === "Date")?.data || ""
-      setDate(tmpDate ? new Date(tmpDate) : new Date());
+      setDate(tmpDate ? new Date(tmpDate.replace(/\//g, '-')) : new Date());
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [program.length]);
