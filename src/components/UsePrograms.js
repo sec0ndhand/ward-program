@@ -25,15 +25,21 @@ export function usePrograms(selectedDate = "") {
                 (response) => {
                   setPrograms(transformData(response.result.values));
                   let today =
-                    selectedDate === "" ? new Date() : new Date(selectedDate);
+                    selectedDate === "" ? new Date() : new Date(selectedDate.replace(/\//g, '-'));
                   response.result.values.some((sundayProgram, i) => {
-                    if (i === 0) return false;
-                    let currentProgram = new Date(sundayProgram[0]);
-                    if (today.getTime() >= currentProgram.getTime()) {
+                    if (i === 0 || sundayProgram[0] === 'Date') return false;
+                    let currentProgram = new Date(sundayProgram[0].replace(/\//g, '-'));
+                    let todayIsLaterThanSundayDate = today.getTime() >= currentProgram.getTime()
+                    // console.log({test: sundayProgram[0], todayIsLaterThanSundayDate, currentProgram, today})
+                    if (todayIsLaterThanSundayDate) {
                       return false;
                     } else {
+                      // console.log(response.result.values[i - 1]);
                       // setProgram(response.result.values[i - 1]);
-                      setProgram(transformData([response.result.values[0], response.result.values[i - 1]])[0]);
+                      let sundayArray = [response.result.values[0], response.result.values[i - 1]]
+                      let transformedSundayArray = transformData(sundayArray);
+                      console.log({sundayArray, transformedSundayArray})
+                      setProgram(transformedSundayArray[0]);
                       return true;
                     }
                   });
@@ -58,7 +64,7 @@ export function transformData(sundays) {
     sunday.forEach((item, i) => {
       sundayData.push({data: item, name: header[i]});
     });
-    return sundayData;
+    return sundayData.filter((item) => item.data !== "");
   });
 }
 
